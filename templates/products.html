@@ -1,0 +1,26 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+</head>
+<body>
+    <h1>Добро пожаловать!</h1>
+____________________________________________________________________________________________________________________________________________________________________________________________
+    <h2>Популярные товары</h2>
+        <div class="products">
+        {% for product in products %}
+            <div class="product">
+                <a href="{% url 'product_detail' product.id %}" class="product-link">
+                    <img src="{{ product.photo.url }}" alt="{{ product.name }}" class="productimg">
+                    <span class="product-name">{{ product.name }}</span>
+                    <span class="product-price">Стоимость: {{ product.price }} руб.</span>
+                </a>
+            </div>
+        {% endfor %}
+        </div>  
+</body>
+</html>
